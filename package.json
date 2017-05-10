@@ -1,0 +1,46 @@
+{
+  "name": "js-starter",
+  "version": "1.0.0",
+  "description": "This is a basic js starter boot app.",
+  "main": "index.js",
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "scripts": {
+    "prestart": "",
+    "start": "npm-run-all --parallel security-check start-app lint:watch test:watch",
+    "start-app": "babel-node src/server/appStart.js",
+    "lint": "esw webpack.config.* src",
+    "lint:watch": "npm run lint -- --watch",
+    "poststart": "",
+    "security-check": "nsp check",
+    "test": "mocha --reporter progress src/server/testSetup.js \"src/**/*.test.js\"",
+    "test:watch":"npm run test -- --watch"
+
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-latest": "^6.24.1",
+    "chai": "^3.5.0",
+    "css-loader": "^0.28.1",
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-watch": "^3.1.0",
+    "express": "^4.15.2",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "html-webpack-plugin": "^2.28.0",
+    "jsdom": "^10.1.0",
+    "mocha": "^3.3.0",
+    "npm-run-all": "^4.0.2",
+    "nsp": "^2.6.3",
+    "numeral": "^2.0.6",
+    "open": "0.0.5",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.0",
+    "webpack-dev-middleware": "^1.10.2",
+    "webpack-hot-middleware": "^2.18.0",
+    "webpack-md5-hash": "0.0.5"
+  }
+}
