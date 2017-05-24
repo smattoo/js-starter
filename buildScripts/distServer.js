@@ -1,19 +1,18 @@
 import express from 'express';
 import open from 'open';
 import { RouteConfig } from './routeConfig';
-import webpack from 'webpack';
-import webpackConfig from '../../webpack.config.dev';
+import compression from 'compression';
+import path from 'path';
 
 const port = 3000;
 const app = express();
 
-const compiler = webpack(webpackConfig);
+app.use(compression())
+app.use(express.static('dist'));
 
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: webpackConfig.output.publicPath
-}));
-
+app.get("/",function(req, res){
+  res.sendFile(path.join(__dirname,'../dist/index.html'));
+});
 
 RouteConfig.register(app);
 
@@ -24,5 +23,3 @@ app.listen(port, function (err) {
     open('http://localhost:' + port);
   }
 })
-
-

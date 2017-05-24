@@ -12,11 +12,11 @@ describe('First Test', () => {
 
 
 describe('index.html', () => {
-  it('should say hello', () => {
-    const index = fs.readFileSync('./src/client/index.html', 'utf-8');
+  it('should say users', () => {
+    const index = fs.readFileSync('./src/index.html', 'utf-8');
     const dom = new JSDOM(index);
     const document = dom.window.document;
     const h1 = document.getElementsByTagName('h1')[0];
-    expect(h1.innerHTML).to.equal("Hello world.....");
+    expect(h1.innerHTML).to.equal("Users");
   });
 });
